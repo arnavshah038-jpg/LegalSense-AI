@@ -2,24 +2,24 @@ import streamlit as st
 import requests
 import json
 
-# Page Settings
+
 st.set_page_config(page_title="LegalTech AI Dashboard", page_icon="⚖️", layout="wide")
 
 FASTAPI_URL = "http://127.0.0.1:8000"
 
 st.title("⚖️ LegalTech AI Contract Analytics Platform")
-st.markdown("### Local AI + Qdrant Vector DB ke sath Contract Analysis aur Intelligence Engine")
-st.write("---")
+st.markdown(" Local AI + Qdrant Vector DB ke sath Contract Analysis aur Intelligence Engine")
+st.write("-")
 
-# Layout: Screen divide ki (Left: Upload, Right: RAG Chat)
+
 col1, col2 = st.columns([1, 1.5], gap="large")
 
 with col1:
     st.header("📁 Contract Ingestion")
-    uploaded_file = st.file_uploader("Apna Legal Contract (PDF) upload karein", type=["pdf"])
+    uploaded_file = st.file_uploader("Apna Legal Contract (PDF) upload here", type=["pdf"])
     
     if uploaded_file is not None:
-        if st.button("🚀 Process & Extract Contract"):
+        if st.button("Process & Extract Contract"):
             with st.spinner("PDF se text extract ho raha hai aur Llama3 metadata parse kar raha hai..."):
                 try:
                     files = {"file": (uploaded_file.name, uploaded_file.getvalue(), "application/pdf")}
